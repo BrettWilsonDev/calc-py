@@ -34,32 +34,37 @@ def calcLogic(numString, op):
 
 def displayCalcOutput(numString):
     displayArr = []
+    sumArrLen = len(sumArr) 
+    prefixAns = ""
 
     i = 0
     arrLen = len(numString)
     while (i < arrLen):
-        if numString[i] == '+':
+        if (numString[i] == '+'):
             displayArr.append(" + ")
             op = "+"
-        elif numString[i] == '-':
+        elif (numString[i] == '-'):
             displayArr.append(" - ")
             op = "-"
-        elif numString[i] == '*':
+        elif (numString[i] == '*'):
             displayArr.append(" * ")
             op = "*"
-        elif numString[i] == '/':
+        elif (numString[i] == '/'):
             displayArr.append(" / ")
             op = "/"
-        elif numString[i] == '%':
+        elif (numString[i] == '%'):
             displayArr.append(" % ")
             op = "%"
         else:
             displayArr.append(numString[i])
-
+        
         i += 1
 
+    if (sumArrLen >= 1):
+        prefixAns = "ans"
+
     numDisplay = ''.join(displayArr)
-    numDisplay = numDisplay + " = " + str(calcLogic(numString, op))
+    numDisplay = prefixAns + numDisplay + " = " + str(calcLogic(numString, op))
     mainCalcBox = Element("mainCalcDisplay")
     mainCalcBox.write(numDisplay)
       
@@ -156,11 +161,11 @@ def calculate():
         Element('mainCalcDisplay').write("Nothing to calculate!")
     elif "/0" in numString:
         Element('mainCalcDisplay').write("Cannot divide by zero!")
+        numArr.clear()
     elif "%0" in numString:
         Element('mainCalcDisplay').write("Cannot mod by zero!")
     else:
         numString = ''.join(numArr)
-        # calcLogic(numString)
         displayCalcOutput(numString)
 
 
