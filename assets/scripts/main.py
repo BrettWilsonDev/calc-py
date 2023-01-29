@@ -8,14 +8,29 @@ import simpleeval as spe
 import re
 
 numArr = []
+sumArr = []
 
 
-def calcLogic(numString):
-    output = spe.simple_eval(numString)
-    output = str(output)
-    print(type(output))
-    return output
-
+def calcLogic(numString, op):
+    arrLen = len(sumArr)
+    if (arrLen < 1):
+        sumArr.clear()
+        output = spe.simple_eval(numString)
+        output = str(output)
+        sumArr.append(output)
+        numArr.clear()
+        return output
+    else:
+        sumString = ''.join(sumArr)
+        output = spe.simple_eval(sumString + numString)
+        # print(f"\n\n\n\n\nop: {op} sumString: {sumString} numString: {numString} numArr: {numArr} sumArr: {sumArr} total = {sumString + numString}")
+        output = str(output)
+        # reset numArr and SumArr as well add current value to now free slot in sumArr
+        numArr.clear()
+        sumArr.clear()
+        sumArr.append(output)
+        return output
+        
 
 def displayCalcOutput(numString):
     displayArr = []
@@ -25,21 +40,26 @@ def displayCalcOutput(numString):
     while (i < arrLen):
         if numString[i] == '+':
             displayArr.append(" + ")
+            op = "+"
         elif numString[i] == '-':
             displayArr.append(" - ")
+            op = "-"
         elif numString[i] == '*':
             displayArr.append(" * ")
+            op = "*"
         elif numString[i] == '/':
             displayArr.append(" / ")
+            op = "/"
         elif numString[i] == '%':
             displayArr.append(" % ")
+            op = "%"
         else:
             displayArr.append(numString[i])
 
         i += 1
 
     numDisplay = ''.join(displayArr)
-    numDisplay = numDisplay + " = " + str(calcLogic(numString))
+    numDisplay = numDisplay + " = " + str(calcLogic(numString, op))
     mainCalcBox = Element("mainCalcDisplay")
     mainCalcBox.write(numDisplay)
       
@@ -121,6 +141,7 @@ def opMod():
 
 def clearCalc():
     numArr.clear()
+    sumArr.clear()
     arrLen = len(numArr)
     if (arrLen == 0):
         Element('mainCalcDisplay').write(" ")
@@ -139,7 +160,7 @@ def calculate():
         Element('mainCalcDisplay').write("Cannot mod by zero!")
     else:
         numString = ''.join(numArr)
-        calcLogic(numString)
+        # calcLogic(numString)
         displayCalcOutput(numString)
 
 
