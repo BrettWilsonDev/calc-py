@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>calc-py</title>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+  </head>
+
+  <body>
+
+      <py-config>
+        [[fetch]]
+        from = './assets/scripts/'
+        files = ['simpleeval.py']
+      </py-config>
+
+    
+    
+    <button id="num1" type="button" py-onClick="num1()">1</button>
+    <div id="show1"></div>
+
+    <button id="num2" type="button" py-onClick="num2()">2</button>
+    <div id="show2"></div>
+
+    <button id="num3" type="button" py-onClick="num3()">3</button>
+    <div id="show3"></div>
+
+    <button id="num4" type="button" py-onClick="num4()">4</button>
+    <div id="show4"></div>
+
+    <button id="num5" type="button" py-onClick="num5()">5</button>
+    <div id="show5"></div>
+
+    <button id="num6" type="button" py-onClick="num6()">6</button>
+    <div id="show6"></div>
+
+    <button id="num7" type="button" py-onClick="num7()">7</button>
+    <div id="show7"></div>
+
+    <button id="num8" type="button" py-onClick="num8()">8</button>
+    <div id="show8"></div>
+
+    <button id="num9" type="button" py-onClick="num9()">9</button>
+    <div id="show9"></div>
+
+    <button id="num0" type="button" py-onClick="num0()">0</button>
+    <div id="show0"></div>
+
+    <button id="opPlus" type="button" py-onClick="opPlus()">+</button>
+    <div id="showPlus"></div>
+
+    <button id="opMinus" type="button" py-onClick="opMinus()">-</button>
+    <div id="showMinus"></div>
+
+    <button id="opDivide" type="button" py-onClick="opDivide()">/</button>
+    <div id="showDivide"></div>
+
+    <button id="opTimes" type="button" py-onClick="opTimes()">*</button>
+    <div id="showTimes"></div>
+
+    <button id="opMod" type="button" py-onClick="opMod()">Mod</button>
+    <div id="showMod"></div>
+
+    <button id="Numbers" type="button" py-onClick="showNumbers()">Calculate</button>
+    <div id="showNum"></div>
+
+
+    <input type=text id=calc_input name=input autocomplete=off placeholder="calc input">
+    <button type=button id=submit py-onClick="calcIn()">submit</button>
+
+    <div id="calcBox"></div>
+
+    <div id="mainCalcDisplay"></div>
+
+
+<py-script src="/assets/scripts/main.py"></py-script>
+
+
+  </body>
+</html>
+
