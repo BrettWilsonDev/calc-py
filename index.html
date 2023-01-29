@@ -2,13 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>calc-py</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" viewport-fit=cover, shrink-to-fit="yes">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.png">
+    <link rel="stylesheet" href="assets/styles/main.min.css">
     <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
     <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <title>calc-py</title>
   </head>
 
-  <body>
+  <body style="display: flex; flex-direction: column; min-height: 98vh;">
+    <div style="flex-grow: 1;">   
 
       <py-config>
         [[fetch]]
@@ -16,71 +20,62 @@
         files = ['simpleeval.py']
       </py-config>
 
+    <div class="calculator">
+
+      <div class="mainoutput calculator-screen" id="mainCalcDisplay"></div>
+
+      <div class="calculator-keys">
     
-    
-    <button id="num1" type="button" py-onClick="num1()">1</button>
-    <div id="show1"></div>
+        <button class="Button" id="num1" type="button" py-onClick="num1()">1</button>
 
-    <button id="num2" type="button" py-onClick="num2()">2</button>
-    <div id="show2"></div>
+        <button class="Button" id="num2" type="button" py-onClick="num2()">2</button>
 
-    <button id="num3" type="button" py-onClick="num3()">3</button>
-    <div id="show3"></div>
+        <button class="Button" id="num3" type="button" py-onClick="num3()">3</button>
 
-    <button id="num4" type="button" py-onClick="num4()">4</button>
-    <div id="show4"></div>
+        <button class="Button" id="num4" type="button" py-onClick="num4()">4</button>
 
-    <button id="num5" type="button" py-onClick="num5()">5</button>
-    <div id="show5"></div>
+        <button class="Button" id="num5" type="button" py-onClick="num5()">5</button>
 
-    <button id="num6" type="button" py-onClick="num6()">6</button>
-    <div id="show6"></div>
+        <button class="Button" id="num6" type="button" py-onClick="num6()">6</button>
 
-    <button id="num7" type="button" py-onClick="num7()">7</button>
-    <div id="show7"></div>
+        <button class="Button" id="num7" type="button" py-onClick="num7()">7</button>
 
-    <button id="num8" type="button" py-onClick="num8()">8</button>
-    <div id="show8"></div>
+        <button class="Button" id="num8" type="button" py-onClick="num8()">8</button>
 
-    <button id="num9" type="button" py-onClick="num9()">9</button>
-    <div id="show9"></div>
+        <button class="Button" id="num9" type="button" py-onClick="num9()">9</button>
 
-    <button id="num0" type="button" py-onClick="num0()">0</button>
-    <div id="show0"></div>
+        <button class="Button" id="num0" type="button" py-onClick="num0()">0</button>
 
-    <button id="opPlus" type="button" py-onClick="opPlus()">+</button>
-    <div id="showPlus"></div>
+        <button class="Button operator" id="opPlus" type="button" py-onClick="opPlus()">+</button>
 
-    <button id="opMinus" type="button" py-onClick="opMinus()">-</button>
-    <div id="showMinus"></div>
+        <button class="Button operator" id="opMinus" type="button" py-onClick="opMinus()">-</button>
 
-    <button id="opTimes" type="button" py-onClick="opTimes()">*</button>
-    <div id="showTimes"></div>
+        <button class="Button operator" id="opTimes" type="button" py-onClick="opTimes()">&times;</button>
 
-    <button id="opDivide" type="button" py-onClick="opDivide()">/</button>
-    <div id="showDivide"></div>
+        <button class="Button operator" id="opDivide" type="button" py-onClick="opDivide()">&divide;</button>
 
-    <button id="opMod" type="button" py-onClick="opMod()">Mod</button>
-    <div id="showMod"></div>
+        <button class="Button2 mod" id="opMod" type="button" py-onClick="opMod()">Mod</button>
 
-    <button id="Numbers" type="button" py-onClick="calculate()">Calculate</button>
-    <div id="showNum"></div>
+        <button class="Button clearAll" id="clearCalc" type="button" py-onClick="clearCalc()">AC</button>
 
-    <button id="clearCalc" type="button" py-onClick="clearCalc()">AC</button>
-    <div id="showClearAc"></div>
+        <button class="Button2 calculate" id="Numbers" type="button" py-onClick="calculate()">=</button>
 
+    </div>
 
-    <!-- <input type=text id=calc_input name=input autocomplete=off placeholder="calc input">
-    <button type=button id=submit py-onClick="calcIn()">submit</button>
-
-    <div id="calcBox"></div> -->
-
-    <div id="mainCalcDisplay"></div>
-
+  </div>
 
 <py-script src="/assets/scripts/main.py"></py-script>
 
-
+</div>
+  <footer style="text-align: center; height: 20px; color: #000;">
+    <div>
+        &copy;
+        <span id="footerC">
+            <script>document.getElementById('footerC').appendChild(document.createTextNode(new Date().getFullYear()))</script>
+        </span>
+        | Made by Brett Wilson
+    </div>
+  </footer> 
   </body>
 </html>
 

@@ -121,7 +121,7 @@ def clearCalc():
     numArr.clear()
     arrLen = len(numArr)
     if (arrLen == 0):
-        Element('mainCalcDisplay').write("cleared")
+        Element('mainCalcDisplay').write(" ")
 
 
 
