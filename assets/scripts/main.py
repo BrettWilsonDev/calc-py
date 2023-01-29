@@ -12,6 +12,8 @@ numArr = []
 
 def calcLogic(numString):
     output = spe.simple_eval(numString)
+    output = str(output)
+    print(type(output))
     return output
 
 
