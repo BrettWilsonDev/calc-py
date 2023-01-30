@@ -163,7 +163,11 @@ def opMod():
     displayCalcOutput()
 
 def deleteNum():
-    numArr.pop()
+    arrLen = len(numArr)
+
+    if (not (arrLen == 0)):
+        numArr.pop()
+    
     displayCalcOutput()
 
 
