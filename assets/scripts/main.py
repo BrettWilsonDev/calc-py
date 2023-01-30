@@ -12,6 +12,7 @@ sumArr = []
 # function to do the sum using simple eval
 def calcLogic(numString):
     arrLen = len(sumArr)
+    sumString = ''.join(sumArr)
 
     if (arrLen < 1):
         sumArr.clear()
@@ -21,7 +22,7 @@ def calcLogic(numString):
         numArr.clear()
         return output
     else:
-        if (not numArr[0] == "+" or numArr[0] == "-" or numArr[0] == "*" or numArr[0] == "/" or  numArr[0] == "%" ):
+        if (not (numArr[0] == "+" or numArr[0] == "-" or numArr[0] == "*" or numArr[0] == "/" or  numArr[0] == "%")):
             output = "syntax error"
             return output
         else:
