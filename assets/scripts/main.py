@@ -20,15 +20,20 @@ def calcLogic(numString, op):
         numArr.clear()
         return output
     else:
-        sumString = ''.join(sumArr)
-        output = spe.simple_eval(sumString + numString)
-        # print(f"op: {op} sumString: {sumString} numString: {numString} numArr: {numArr} sumArr: {sumArr} total = {sumString + numString}")
-        output = str(output)
-        # reset numArr and SumArr as well add current value to now free slot in sumArr
-        numArr.clear()
-        sumArr.clear()
-        sumArr.append(output)
-        return output
+
+        if (not numArr[0] == "+" or numArr[0] == "-" or numArr[0] == "*" or numArr[0] == "/" or  numArr[0] == "%" ):
+            output = "syntax error"
+            return output
+        else:
+            sumString = ''.join(sumArr)
+            output = spe.simple_eval(sumString + numString)
+            # print(f"op: {op} sumString: {sumString} numString: {numString} numArr: {numArr} sumArr: {sumArr} total = {sumString + numString}")
+            output = str(output)
+            # reset numArr and SumArr as well add current value to now free slot in sumArr
+            numArr.clear()
+            sumArr.clear()
+            sumArr.append(output)
+            return output
         
 
 def displayCalcOutput(flag = False):
@@ -180,13 +185,11 @@ def calculate():
 
     if (arrLen == 0):
         Element('mainCalcDisplay').write("Nothing to calculate!")
-    elif "/0" in numString:
+    elif ("/0" in numString):
         Element('mainCalcDisplay').write("Cannot divide by zero!")
         numArr.clear()
         sumArr.clear()
-    elif "%0" in numString:
+    elif ("%0" in numString):
         Element('mainCalcDisplay').write("Cannot mod by zero!")
     else:
         displayCalcOutput(True)
-
-
