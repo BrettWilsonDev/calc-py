@@ -98,6 +98,17 @@ table {
     border-color: #cc2900;
 }
 
+.delete {
+    background-color: #f0595f;
+    border-color: #b0353a;
+    color: #fff;
+}
+
+.delete:hover {
+    background-color: #f17377;
+    border-color: #cc2900;
+}
+
 .calculate {
     background-color: #006494;
     border-color: #006496;
@@ -131,7 +142,7 @@ table {
     border-color: #006496;
     color: #fff;
     height: 100%;
-    grid-area: 2 / 4 / 6 / 5;
+    grid-area: 3 / 4 / 6 / 5;
 }
 
 .name {

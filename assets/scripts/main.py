@@ -161,6 +161,10 @@ def opMod():
     numArr.append("%")
     displayCalcOutput()
 
+def deleteNum():
+    numArr.pop()
+    displayCalcOutput()
+
 
 def clearCalc():
     numArr.clear()
