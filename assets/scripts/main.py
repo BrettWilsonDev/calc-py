@@ -4,14 +4,15 @@
 
 import js
 import simpleeval as spe
-import re
 
+# global lists
 numArr = []
 sumArr = []
 
-
-def calcLogic(numString, op):
+# function to do the sum using simple eval
+def calcLogic(numString):
     arrLen = len(sumArr)
+
     if (arrLen < 1):
         sumArr.clear()
         output = spe.simple_eval(numString)
@@ -20,56 +21,49 @@ def calcLogic(numString, op):
         numArr.clear()
         return output
     else:
-
         if (not numArr[0] == "+" or numArr[0] == "-" or numArr[0] == "*" or numArr[0] == "/" or  numArr[0] == "%" ):
             output = "syntax error"
             return output
         else:
             sumString = ''.join(sumArr)
             output = spe.simple_eval(sumString + numString)
-            # print(f"op: {op} sumString: {sumString} numString: {numString} numArr: {numArr} sumArr: {sumArr} total = {sumString + numString}")
             output = str(output)
-            # reset numArr and SumArr as well add current value to now free slot in sumArr
             numArr.clear()
             sumArr.clear()
             sumArr.append(output)
             return output
         
 
+# function to display numbers to the screen of the calculator
 def displayCalcOutput(flag = False):
     numString = ''.join(numArr)
     displayArr = []
-    sumArrLen = len(sumArr) 
     prefixAns = ""
-
+    sumArrLen = len(sumArr)
+    arrLen = len(numString) 
     i = 0
-    arrLen = len(numString)
+
     while (i < arrLen):
         if (numString[i] == '+'):
             displayArr.append(" + ")
-            op = "+"
         elif (numString[i] == '-'):
             displayArr.append(" - ")
-            op = "-"
         elif (numString[i] == '*'):
             displayArr.append(" * ")
-            op = "*"
         elif (numString[i] == '/'):
             displayArr.append(" / ")
-            op = "/"
         elif (numString[i] == '%'):
             displayArr.append(" % ")
-            op = "%"
         else:
             displayArr.append(numString[i])
         i += 1
+    
+    numDisplay = ''.join(displayArr)
 
     if (sumArrLen >= 1):
         prefixAns = "ans"
-
-    numDisplay = ''.join(displayArr)
     if (flag == True):
-        numDisplay = prefixAns + numDisplay + " = " + str(calcLogic(numString, op))
+        numDisplay = prefixAns + numDisplay + " = " + str(calcLogic(numString))
     else:
         numDisplay = prefixAns + numDisplay
         
@@ -77,6 +71,7 @@ def displayCalcOutput(flag = False):
     mainCalcBox.write(numDisplay)
 
 
+# functions that listen for button on the dom
 def num1():
     Element('mainCalcDisplay').write("1")
     numArr.append("1")
@@ -175,6 +170,7 @@ def clearCalc():
     numArr.clear()
     sumArr.clear()
     arrLen = len(numArr)
+
     if (arrLen == 0):
         Element('mainCalcDisplay').write(" ")
 
