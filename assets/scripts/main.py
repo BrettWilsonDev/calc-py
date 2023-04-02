@@ -19,8 +19,9 @@ def calcLogic(numString):
         try:
             output = spe.simple_eval(numString)
         except SyntaxError:
+            clearCalc()
             output = "syntax error"
-            
+                        
         output = str(output)
         sumArr.append(output)
         numArr.clear()
@@ -31,7 +32,12 @@ def calcLogic(numString):
             return output
         else:
             sumString = ''.join(sumArr)
-            output = spe.simple_eval(sumString + numString)
+            try:
+                output = spe.simple_eval(sumString + numString)
+            except SyntaxError:
+                clearCalc()
+                output = "syntax error"
+                
             output = str(output)
             numArr.clear()
             sumArr.clear()
@@ -187,7 +193,6 @@ def clearCalc():
 def calculate():
     numString = ''.join(numArr)
     arrLen = len(numArr)
-
 
     if (arrLen == 0):
         Element('mainCalcDisplay').write("Nothing to calculate!")
