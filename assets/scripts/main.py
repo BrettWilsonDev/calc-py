@@ -16,7 +16,11 @@ def calcLogic(numString):
 
     if (arrLen < 1):
         sumArr.clear()
-        output = spe.simple_eval(numString)
+        try:
+            output = spe.simple_eval(numString)
+        except SyntaxError:
+            output = "syntax error"
+            
         output = str(output)
         sumArr.append(output)
         numArr.clear()
@@ -183,6 +187,7 @@ def clearCalc():
 def calculate():
     numString = ''.join(numArr)
     arrLen = len(numArr)
+
 
     if (arrLen == 0):
         Element('mainCalcDisplay').write("Nothing to calculate!")
