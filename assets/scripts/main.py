@@ -1,6 +1,6 @@
 # Made by Brett Wilson
 # contact: https://github.com/BrettWilsonBDW
-# Made using pyscript: https://pyscript.net/  
+# Made using pyscript: https://pyscript.net/
 
 import js
 import simpleeval as spe
@@ -10,6 +10,8 @@ numArr = []
 sumArr = []
 
 # function to do the sum using simple eval
+
+
 def calcLogic(numString):
     arrLen = len(sumArr)
     sumString = ''.join(sumArr)
@@ -21,13 +23,13 @@ def calcLogic(numString):
         except SyntaxError:
             clearCalc()
             output = "syntax error"
-                        
+
         output = str(output)
         sumArr.append(output)
         numArr.clear()
         return output
     else:
-        if (not (numArr[0] == "+" or numArr[0] == "-" or numArr[0] == "*" or numArr[0] == "/" or  numArr[0] == "%")):
+        if (not (numArr[0] == "+" or numArr[0] == "-" or numArr[0] == "*" or numArr[0] == "/" or numArr[0] == "%")):
             output = "syntax error"
             return output
         else:
@@ -37,21 +39,21 @@ def calcLogic(numString):
             except SyntaxError:
                 clearCalc()
                 output = "syntax error"
-                
+
             output = str(output)
             numArr.clear()
             sumArr.clear()
             sumArr.append(output)
             return output
-        
+
 
 # function to display numbers to the screen of the calculator
-def displayCalcOutput(flag = False):
+def displayCalcOutput(flag=False):
     numString = ''.join(numArr)
     displayArr = []
     prefixAns = ""
     sumArrLen = len(sumArr)
-    arrLen = len(numString) 
+    arrLen = len(numString)
     i = 0
 
     while (i < arrLen):
@@ -68,7 +70,7 @@ def displayCalcOutput(flag = False):
         else:
             displayArr.append(numString[i])
         i += 1
-    
+
     numDisplay = ''.join(displayArr)
 
     if (sumArrLen >= 1):
@@ -77,7 +79,7 @@ def displayCalcOutput(flag = False):
         numDisplay = prefixAns + numDisplay + " = " + str(calcLogic(numString))
     else:
         numDisplay = prefixAns + numDisplay
-        
+
     mainCalcBox = Element("mainCalcDisplay")
     mainCalcBox.write(numDisplay)
 
@@ -172,12 +174,13 @@ def opMod():
     numArr.append("%")
     displayCalcOutput()
 
+
 def deleteNum():
     arrLen = len(numArr)
 
     if (not (arrLen == 0)):
         numArr.pop()
-    
+
     displayCalcOutput()
 
 
